@@ -155,3 +155,17 @@ for (int i = 4; i >= 2; i--)
 // Now that we have created space for the new element,
 // we can insert it at the required index.
 intArray[2] = 30;
+
+Deleting
+
+Even though we call it a deletion, its not like we actually freed up the space for a new element, right?
+This is because we don't actually need to free up any space. Simply overwriting the value at a certain index deletes the element at that index.
+Seeing as the length variable in our examples tells us the next index where we can insert a new element,
+reducing it by one ensures the next new element is written over the deleted one.
+This also indicates that the Array now contains one less element, which is exactly what we want programmatically.
+
+Deleting From the Start of an Array
+Next comes the costliest of all deletion operations for an Array—deleting the first element. If we want to delete the first element of the Array,
+ that will create a vacant spot at the 0th index. To fill that spot, we will shift the element at index 1 one step to the left. Going by the ripple
+ effect, every element all the way to the last one will be shifted one place to the left. This shift of elements takes O(N)O(N) time, where NN is the
+ number of elements in the Array.
