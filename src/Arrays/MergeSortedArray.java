@@ -10,35 +10,39 @@ import java.util.Arrays;
 
 public class MergeSortedArray {
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        int writeIndex = nums1.length -1;
-        int r1 = m - 1;
-        int r2 = n - 1;
-       for(;writeIndex>=0;writeIndex--) {
-           if (r1 >= 0 && r2 >= 0) {
-               nums1[writeIndex] = nums1[r1] > nums2[r2] ? nums1[r1--] : nums2[r2--];
-           } else if (r1 >= 0) {
-               nums1[writeIndex] = nums1[r1--];
-           } else {
-               nums1[r1--] = nums2[r2--];
-           }
-       }
+        int r1 = m-1;
+        int r2 = n-1;
 
 
+        for(int w = m+n -1; w>0; w--) {
+            if (r1 >= 0 && r2 >= 0) {
+                nums1[w] = (nums1[r1] > nums2[r2] )? nums1[r1--]: nums2[r2--];
+            }
+            else if (r2 > 0) {
+                nums1[w] = nums2[r2--];
+            }
+            else{
+                nums1[w] = nums1[r1--];
+            }
+        }
         Arrays.stream(nums1)
                 .forEach(System.out::println);
+           }
 
-    }
+
+
+
 
     public static void main(String[] args) {
-        int[] nums1 = {1,2,3,0,0,0};
-        int m = 3;
-        int[] nums2 = {2,5,6};
-        int n = 3;
+//        int[] nums1 = {1,2,3,0,0,0};
+//        int m = 3;
+//        int[] nums2 = {2,5,6};
+//        int n = 3;
 
-//        int[] nums1 = {0};
-//        int m = 0;
-//        int[] nums2 = {1};
-//        int n = 1;
+        int[] nums1 = {0};
+        int m = 0;
+        int[] nums2 = {1};
+        int n = 1;
 
 //        int[] nums1 = {2,0};
 //        int m = 1;
